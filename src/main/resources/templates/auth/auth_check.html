@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Authorization check</title>
+</head>
+<body>
+<div class="auth-button">
+    <form method="post" th:action="@{exec_auth}" th:object="${helloForm}">
+        <span th:text="*{helloForm.requestType}">requestType</span>
+        <span th:text="*{helloForm.scope}">scope</span>
+        <span th:text="*{helloForm.clientId}">clientId</span>
+        <span th:text="*{helloForm.redirectUri}">redirectUri</span>
+        <span th:text="*{helloForm.state}">state</span>
+        </br>
+        Are you sure you want give this authorization to this client?
+        </br>
+        <input type="submit" value="Auth" />
+    </form>
+</div>
+
+</body>
+</html>

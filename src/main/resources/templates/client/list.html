@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Sake Seller</title>
+</head>
+<body>
+<header>Sake list</header>
+<article>Sake list</article>
+<div class="auth-button">
+    <div>
+        Access token: <span th:text="*{accessTokenResponse.accessToken}"></span>
+    </div>
+    <div>
+        Token type: <span th:text="*{accessTokenResponse.tokenType}"></span>
+    </div>
+</div>
+<div>
+    <a href="/hello">Back to top page</a>
+</div>
+
+</body>
+</html>

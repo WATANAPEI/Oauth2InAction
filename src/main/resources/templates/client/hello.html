@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Sake Seller</title>
+</head>
+<body>
+  <header>Welcome to sake seller page.</header>
+  <article>You can choose sakes if you want</article>
+  <div class="auth-button">
+      <form method="post" th:action="@{get_auth}" th:object="${helloForm}">
+          <input type="text" name="requestType" th:field="*{requestType}" />
+          <input type="text" name="scope" th:field="*{scope}" />
+          <input type="text" name="clientId" th:field="*{clientId}" />
+          <input type="text" name="redirectUri" th:field="*{redirectUri}" />
+          <input type="text" name="state" th:field="*{state}" />
+          </br>
+          Start auth
+          </br>
+          <input type="submit" value="Auth" />
+      </form>
+  </div>
+
+</body>
+</html>
