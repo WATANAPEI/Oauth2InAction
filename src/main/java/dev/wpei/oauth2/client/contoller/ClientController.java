@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.validation.constraints.NotNull;
+
 @Controller
 public class ClientController {
 
@@ -55,15 +57,15 @@ public class ClientController {
 
     @GetMapping("/show_access_token")
     public String list(
-            @Validated HelloForm request,
-            BindingResult result,
-            @RequestParam String code,
-            @RequestParam String grantType,
+            @RequestParam("client_id") @NotNull String clientId,
+            @RequestParam("code") @NotNull String code,
+            @RequestParam("grant_type") @NotNull String grantType,
             Model model) {
         // Null here
-        AccessTokenResponse accessTokenResponse = tokenService.getToken(request.getClientId(), code, grantType);
+        AccessTokenResponse accessTokenResponse = tokenService.getToken(clientId, code, grantType);
         model.addAttribute(accessTokenResponse);
         return "/client/list";
     }
+
 
 }

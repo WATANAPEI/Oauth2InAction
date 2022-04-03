@@ -1,6 +1,7 @@
 package dev.wpei.oauth2.client.service;
 
 import dev.wpei.oauth2.auth.dto.AccessTokenRequest;
+import dev.wpei.oauth2.auth.dto.AccessTokenRequest2;
 import dev.wpei.oauth2.auth.dto.AccessTokenResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.openfeign.EnableFeignClients;
@@ -32,7 +33,7 @@ public class GetTokenService {
             System.out.println("clientId in getToken: " + clientId);
             // something went wrong to pass clientId and clientSecret
             // and clientId and secret become null in getToken
-            response = tokenApi.getToken(new AccessTokenRequest(clientId, code));
+            response = tokenApi.getToken2(new AccessTokenRequest2(clientId, code));
         }
         return response;
     }

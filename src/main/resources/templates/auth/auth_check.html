@@ -7,11 +7,21 @@
 <body>
 <div class="auth-button">
     <form method="post" th:action="@{exec_auth}" th:object="${helloForm}">
-        <span th:text="*{helloForm.requestType}">requestType</span>
-        <span th:text="*{helloForm.scope}">scope</span>
-        <span th:text="*{helloForm.clientId}">clientId</span>
-        <span th:text="*{helloForm.redirectUri}">redirectUri</span>
-        <span th:text="*{helloForm.state}">state</span>
+        <div>
+            Request type: <span th:text="*{requestType}"></span>
+        </div>
+        <div>
+            Scope: <span th:text="*{scope}"></span>
+        </div>
+        <div>
+            Client Id: <span th:text="*{clientId}"></span>
+        </div>
+        <div>
+            Redirect url: <span th:text="*{redirectUri}"></span>
+        </div>
+        <div>
+            State: <span th:text="*{state}"></span>
+        </div>
         </br>
         Are you sure you want give this authorization to this client?
         </br>

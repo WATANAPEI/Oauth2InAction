@@ -17,18 +17,8 @@ public class AuthController {
             @Validated HelloForm request,
             BindingResult result,
             Model model) {
-        System.out.println("Response type: " + request.getRequestType());
-        System.out.println("scope: " + request.getScope());
-        System.out.println("Client id: " + request.getClientId());
-        System.out.println("Redirect uri: " + request.getRedirectUri());
-        System.out.println("State: " + request.getState());
-        String clientSecret = "test_clientSecret";
-        LoginRequest loginRequest = new LoginRequest(request.getClientId(), clientSecret);
-        model.addAttribute(loginRequest);
-        if(result.hasErrors()) {
-            return "/error";
-        }
-        return "/auth/authorize";
+        model.addAttribute(request);
+        return "/auth/auth_check";
     }
 
     @PostMapping("/auth")
@@ -53,10 +43,11 @@ public class AuthController {
             @Validated HelloForm request,
             BindingResult result,
             RedirectAttributes model) {
+        System.out.println("clientId: " + request.getClientId());
         model.addFlashAttribute(request);
         String code = String.valueOf(Math.random());
         String grantType = "authorization_code";
-        return "redirect:/show_access_token?code=" + code + "&grant_type=" + grantType;
+        return "redirect:/show_access_token?client_id=" + request.getClientId() + "&code=" + code + "&grant_type=" + grantType;
     }
 
 

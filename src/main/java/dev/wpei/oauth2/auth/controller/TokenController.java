@@ -31,4 +31,15 @@ public class TokenController {
         return response;
     }
 
+    @PostMapping("/access_token")
+    public AccessTokenResponse accessToken2(
+            @RequestBody AccessTokenRequest2 request,
+            Model model) {
+        AccessTokenResponse response = new AccessTokenResponse(
+                "test_accessToken",
+                "access_token"
+        );
+        return response;
+    }
+
 }
